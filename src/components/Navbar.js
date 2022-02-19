@@ -1,18 +1,25 @@
 /** @format */
 import { Link } from "react-router-dom";
+import { Anchor, Title } from "@mantine/core";
 
 export default function Navbar() {
 	return (
 		<nav>
-			<Link to={"/"}>
-				<h1>Shopping Page</h1>
-			</Link>
+			<Anchor component={Link} to={"/"}>
+				<Title order={1} align={"left"}>
+					Shopping Page
+				</Title>
+			</Anchor>
 			<ul>
 				<li>
-					<Link to={"/about"}>About</Link>
+					<Anchor component={Link} to={"/about"}>
+						About
+					</Anchor>
 				</li>
 				<li>
-					<Link to={"/cart"}>Cart</Link>
+					<Anchor component={Link} to={"/cart"}>
+						Cart
+					</Anchor>
 				</li>
 			</ul>
 		</nav>
