@@ -3,13 +3,17 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ColorSchemeProvider, MantineProvider, Paper } from "@mantine/core";
+import { useLocalStorageValue } from "@mantine/hooks";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Cart from "./components/Cart";
 
 export default function App() {
-	const [colorScheme, setColorScheme] = useState("light");
+	const [colorScheme, setColorScheme] = useLocalStorageValue({
+		key: "mantine-color-scheme",
+		defaultValue: "dark"
+	});
 	const toggleColorScheme = (value) => setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
 	return (

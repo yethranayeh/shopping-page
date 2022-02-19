@@ -1,10 +1,11 @@
 /** @format */
 import { Card as MCard, Image, Text, Badge, Button, Group, useMantineTheme } from "@mantine/core";
+import { PlusIcon } from "@modulz/radix-icons";
 
 export default function Card(props) {
 	const theme = useMantineTheme();
 
-	const imgSize = 160;
+	const imgSize = 150;
 
 	props = {
 		...props,
@@ -34,6 +35,7 @@ export default function Card(props) {
 				</Text>
 
 				<Button variant='light' color='blue' fullWidth style={{ marginTop: 14 }}>
+					<PlusIcon style={{ marginRight: 5 }} />
 					Add to cart
 				</Button>
 			</MCard>
