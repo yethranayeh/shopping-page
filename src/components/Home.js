@@ -9,7 +9,7 @@ export default function Home() {
 	return (
 		<div className='Home'>
 			<h1>Home page</h1>
-			<Grid justify='center' align='center'>
+			<Grid justify='space-around' align='center' gutter='md'>
 				{/* {products.map(product => <Card key={product.id} product={product} />)} */}
 				<Grid.Col sm={6} md={3} lg={2}>
 					<Card />
