@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Grid } from "@mantine/core";
 import Card from "./Card";
 
-export default function Home() {
+export default function Home(props) {
 	const [products, setProducts] = useState([
 		{
 			id: 1,
@@ -29,8 +29,8 @@ export default function Home() {
 		}
 	]);
 
-	function clickHandler() {
-		console.log("clicked");
+	function addToCart() {
+		props.clickHandler();
 	}
 
 	return (
@@ -43,7 +43,7 @@ export default function Home() {
 							title={product.title}
 							description={product.description}
 							price={product.price}
-							clickHandler={clickHandler}
+							clickHandler={addToCart}
 						/>
 					</Grid.Col>
 				))}

@@ -5,7 +5,7 @@ import { ActionIcon, Anchor, Title } from "@mantine/core";
 import { HomeIcon } from "@modulz/radix-icons";
 import ThemeButton from "./ThemeButton";
 
-export default function Navbar() {
+export default function Navbar(props) {
 	return (
 		<nav className='Navbar'>
 			<Anchor component={Link} to={"/"}>
@@ -27,7 +27,7 @@ export default function Navbar() {
 				</li>
 				<li>
 					<Anchor component={Link} to={"/cart"}>
-						Cart
+						Cart{props.cartLength > 0 ? ` (${props.cartLength})` : ""}
 					</Anchor>
 				</li>
 			</ul>

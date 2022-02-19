@@ -1,4 +1,9 @@
 /** @format */
+:root {
+	--gap-sm: 0.4rem;
+	--gap-md: 0.8rem;
+	--gap-lg: 1.2rem;
+}
 
 a {
 	text-decoration: none;
