@@ -17,9 +17,11 @@ export default function App() {
 	});
 	const toggleColorScheme = (value) => setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 	const [cartLength, setCartLength] = useState(0);
+	const [cartItems, setCartItems] = useState([]);
 
-	function clickHandler() {
+	function clickHandler(product) {
 		setCartLength(cartLength + 1);
+		setCartItems([...cartItems, product]);
 	}
 
 	return (
@@ -35,7 +37,7 @@ export default function App() {
 							<Routes>
 								<Route path='/' element={<Home clickHandler={clickHandler} />} />
 								<Route path='/about' element={<About />} />
-								<Route path='/cart' element={<Cart />} />
+								<Route path='/cart' element={<Cart cartItems={cartItems} />} />
 							</Routes>
 						</div>
 					</Paper>

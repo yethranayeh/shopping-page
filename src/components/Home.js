@@ -11,26 +11,27 @@ export default function Home(props) {
 			imgSrc: "https://picsum.photos/id/1/200",
 			title: "Product title",
 			description: "Product description",
-			price: "100"
+			price: 100
 		},
 		{
 			id: 2,
 			imgSrc: "https://picsum.photos/id/2/200",
 			title: "Product title",
 			description: "Second description",
-			price: "140"
+			price: 140
 		},
 		{
 			id: 3,
 			imgSrc: "https://picsum.photos/id/3/200",
 			title: "Product title",
 			description: "Product description",
-			price: "50"
+			price: 50
 		}
 	]);
 
-	function addToCart() {
-		props.clickHandler();
+	function addToCart(id) {
+		// Send the object with corresponding id to the Parent
+		props.clickHandler(products.filter((product) => product.id === id)[0]);
 	}
 
 	return (
@@ -39,6 +40,7 @@ export default function Home(props) {
 				{products.map((product) => (
 					<Grid.Col key={product.id} sm={6} md={3} lg={2}>
 						<Card
+							id={product.id}
 							imgSrc={product.imgSrc}
 							title={product.title}
 							description={product.description}

@@ -2,7 +2,7 @@
 import { Card as MCard, Image, Text, Badge, Button, Group, useMantineTheme } from "@mantine/core";
 import { PlusIcon } from "@modulz/radix-icons";
 
-export default function Card({ imgSrc, title, price, description, clickHandler }) {
+export default function Card({ id, imgSrc, title, price, description, clickHandler, cart }) {
 	const theme = useMantineTheme();
 
 	const imgSize = 150;
@@ -26,10 +26,12 @@ export default function Card({ imgSrc, title, price, description, clickHandler }
 					{description}
 				</Text>
 
-				<Button variant='light' color='blue' fullWidth style={{ marginTop: 14 }} onClick={clickHandler}>
-					<PlusIcon style={{ marginRight: 5 }} />
-					Add to cart
-				</Button>
+				{!cart && (
+					<Button variant='light' color='blue' fullWidth style={{ marginTop: 14 }} onClick={() => clickHandler(id)}>
+						<PlusIcon style={{ marginRight: 5 }} />
+						Add to cart
+					</Button>
+				)}
 			</MCard>
 		</div>
 	);
