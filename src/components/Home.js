@@ -30,13 +30,15 @@ export default function Home(props) {
 	if (loading) {
 		return (
 			<Grid justify='space-around' align='center' gutter='md'>
-				{[...Array(fetchProductAmount)].map((n) => (
-					<Grid.Col key={n} sm={6} md={3} lg={2}>
-						<Skeleton height={150} />
-						<Skeleton height={16} width={"65%"} mt={6} />
-						<Skeleton height={14} mt={6} />
-					</Grid.Col>
-				))}
+				{[...Array(fetchProductAmount).keys()].map((n) => {
+					return (
+						<Grid.Col key={n} sm={6} md={3} lg={2}>
+							<Skeleton height={150} />
+							<Skeleton height={16} width={"65%"} mt={6} />
+							<Skeleton height={14} mt={6} />
+						</Grid.Col>
+					);
+				})}
 			</Grid>
 		);
 	}
