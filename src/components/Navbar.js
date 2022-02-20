@@ -16,9 +16,9 @@ export default function Navbar(props) {
 			<ThemeButton />
 			<ul className='Navbar__Links'>
 				<li>
-					<ActionIcon component={NavLink} to={"/"} aria-label='Home'>
-						<HomeIcon style={{ width: 18, height: 18 }} />
-					</ActionIcon>
+					<Anchor component={NavLink} to={"/"}>
+						Home
+					</Anchor>
 				</li>
 				<li>
 					<Anchor component={NavLink} to={"/about"}>
