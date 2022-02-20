@@ -12,7 +12,7 @@ export default function Cart({ cartItems }) {
 				<Grid.Col key={product.id} span={12}>
 					<Card
 						id={product.id}
-						imgSrc={product.imgSrc}
+						imgSrc={product.image}
 						title={product.title}
 						description={product.description}
 						price={product.price}

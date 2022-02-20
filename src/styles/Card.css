@@ -1,0 +1,18 @@
+/** @format */
+
+.Card__Title {
+	/* Add ellipsis at the end if title is longer than 20 characters */
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	overflow: hidden;
+	white-space: nowrap;
+	max-height: 10rem;
+}
+
+.Card__Title:hover {
+	/* Reveal all the text on hover */
+	max-height: none;
+	overflow: visible;
+	word-wrap: normal;
+	white-space: inherit;
+}

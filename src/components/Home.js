@@ -6,34 +6,20 @@ import Card from "./Card";
 
 export default function Home(props) {
 	const [loading, setLoading] = useState(true);
-	const [products, setProducts] = useState([
-		{
-			id: 1,
-			imgSrc: "https://picsum.photos/id/1/200",
-			title: "Product title",
-			description: "Product description",
-			price: 100
-		},
-		{
-			id: 2,
-			imgSrc: "https://picsum.photos/id/2/200",
-			title: "Product title",
-			description: "Second description",
-			price: 140
-		},
-		{
-			id: 3,
-			imgSrc: "https://picsum.photos/id/3/200",
-			title: "Product title",
-			description: "Product description",
-			price: 50
-		}
-	]);
+	const [products, setProducts] = useState([]);
+	const fetchProductAmount = 10;
 
 	useEffect(() => {
-		setTimeout(() => {
+		// setTimeout(() => {
+		// 	setLoading(false);
+		// }, 2000);
+		async function fetchData() {
+			const response = await fetch(`https://fakestoreapi.com/products?limit=${fetchProductAmount}`);
+			const data = await response.json();
+			setProducts([...data]);
 			setLoading(false);
-		}, 2000);
+		}
+		fetchData();
 	}, []);
 
 	function addToCart(id) {
@@ -65,12 +51,12 @@ export default function Home(props) {
 
 	return (
 		<div className='Home'>
-			<Grid justify='space-around' align='center' gutter='md'>
+			<Grid justify='space-around' align='flex-start' gutter='md'>
 				{products.map((product) => (
 					<Grid.Col key={product.id} sm={6} md={3} lg={2}>
 						<Card
 							id={product.id}
-							imgSrc={product.imgSrc}
+							imgSrc={product.image}
 							title={product.title}
 							description={product.description}
 							price={product.price}

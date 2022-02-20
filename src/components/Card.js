@@ -1,5 +1,6 @@
 /** @format */
-import { Card as MCard, Image, Text, Badge, Button, Group, useMantineTheme } from "@mantine/core";
+import "../styles/Card.css";
+import { Badge, Button, Card as MCard, Image, Group, Spoiler, Text, useMantineTheme } from "@mantine/core";
 import { PlusIcon } from "@modulz/radix-icons";
 
 export default function Card({ id, imgSrc, title, price, description, clickHandler, cart }) {
@@ -12,18 +13,22 @@ export default function Card({ id, imgSrc, title, price, description, clickHandl
 		<div className='Card'>
 			<MCard shadow='sm' padding='lg'>
 				<MCard.Section>
-					<Image src={imgSrc} height={imgSize} alt={title} />
+					<Image src={imgSrc} height={imgSize} alt={title} withPlaceholder />
 				</MCard.Section>
 
 				<Group position='apart' style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
-					<Text weight={500}>{title}</Text>
+					<Text weight={500} className={"Card__Title"}>
+						{title}
+					</Text>
 					<Badge color='pink' variant='light'>
 						${price}
 					</Badge>
 				</Group>
 
 				<Text size='sm' style={{ color: secondaryColor, lineHeight: 1.5 }}>
-					{description}
+					<Spoiler maxHeight={100} showLabel='Show more' hideLabel='Hide'>
+						{description}
+					</Spoiler>
 				</Text>
 
 				{!cart && (
