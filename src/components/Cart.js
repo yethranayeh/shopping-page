@@ -4,9 +4,10 @@ import { Grid } from "@mantine/core";
 
 export default function Cart({ cartItems }) {
 	const prices = cartItems.map((item) => Number(item.price));
+	const total = prices.reduce((prev, next) => prev + next, 0);
 	return (
 		<Grid justify='space-around' align='center' gutter='md'>
-			<h2>Total: {prices.reduce((prev, next) => prev + next, 0)}</h2>
+			<h2>Total: {total}</h2>
 			{cartItems.map((product) => (
 				<Grid.Col key={product.id} span={12}>
 					<Card
