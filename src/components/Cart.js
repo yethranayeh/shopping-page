@@ -2,7 +2,8 @@
 import "../styles/Cart.css";
 import Card from "./Card";
 import { useState, useEffect } from "react";
-import { Badge, Button, Grid } from "@mantine/core";
+import { Alert, Badge, Button, Grid } from "@mantine/core";
+import { ExclamationTriangleIcon } from "@modulz/radix-icons";
 
 export default function Cart({ cartItems, amountUpdateHandler, removeItemHandler }) {
 	const [cartItemsList, setCartItemsList] = useState(cartItems);
@@ -102,6 +103,10 @@ export default function Cart({ cartItems, amountUpdateHandler, removeItemHandler
 			</Grid>
 		);
 	} else {
-		return <h1>No items in cart</h1>;
+		return (
+			<Alert icon={<ExclamationTriangleIcon size={16} />} title='No items!' color='yellow' variant='outline' mx='auto'>
+				You have not added any items to your cart.
+			</Alert>
+		);
 	}
 }
