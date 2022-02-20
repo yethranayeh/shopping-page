@@ -1,10 +1,11 @@
 /** @format */
 
 import { useState, useEffect } from "react";
-import { Grid } from "@mantine/core";
+import { Container, Grid, Skeleton } from "@mantine/core";
 import Card from "./Card";
 
 export default function Home(props) {
+	const [loading, setLoading] = useState(true);
 	const [products, setProducts] = useState([
 		{
 			id: 1,
@@ -32,6 +33,28 @@ export default function Home(props) {
 	function addToCart(id) {
 		// Send the object with corresponding id to the Parent
 		props.clickHandler(products.filter((product) => product.id === id)[0]);
+	}
+
+	if (loading) {
+		return (
+			<Grid justify='space-around' align='center' gutter='md'>
+				<Grid.Col sm={6} md={3} lg={2}>
+					<Skeleton height={150} />
+					<Skeleton height={16} width={"65%"} mt={6} />
+					<Skeleton height={14} mt={6} />
+				</Grid.Col>
+				<Grid.Col sm={6} md={3} lg={2}>
+					<Skeleton height={150} />
+					<Skeleton height={16} width={"65%"} mt={6} />
+					<Skeleton height={14} mt={6} />
+				</Grid.Col>
+				<Grid.Col sm={6} md={3} lg={2}>
+					<Skeleton height={150} />
+					<Skeleton height={16} width={"65%"} mt={6} />
+					<Skeleton height={14} mt={6} />
+				</Grid.Col>
+			</Grid>
+		);
 	}
 
 	return (
