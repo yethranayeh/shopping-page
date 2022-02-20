@@ -1,11 +1,13 @@
 /** @format */
 
 import { useState, useEffect } from "react";
-import { Grid, Skeleton } from "@mantine/core";
+import { Alert, Grid, Skeleton } from "@mantine/core";
+import { Cross1Icon } from "@modulz/radix-icons";
 import Card from "./Card";
 
 export default function Home(props) {
 	const [loading, setLoading] = useState(true);
+	const [hasError, setHasError] = useState(false);
 	const [products, setProducts] = useState([]);
 	const fetchProductAmount = 10;
 
@@ -14,10 +16,14 @@ export default function Home(props) {
 		// 	setLoading(false);
 		// }, 2000);
 		async function fetchData() {
-			const response = await fetch(`https://fakestoreapi.com/products?limit=${fetchProductAmount}`);
-			const data = await response.json();
-			setProducts([...data]);
-			setLoading(false);
+			try {
+				const response = await fetch(`https://fakestoreapi.com/products?limit=${fetchProductAmount}`);
+				const data = await response.json();
+				setProducts([...data]);
+				setLoading(false);
+			} catch (error) {
+				setHasError(true);
+			}
 		}
 		fetchData();
 	}, []);
@@ -40,6 +46,12 @@ export default function Home(props) {
 					);
 				})}
 			</Grid>
+		);
+	} else if (hasError) {
+		return (
+			<Alert icon={<Cross1Icon size={16} />} title='Error!' color='red' variant='outline' mx='auto'>
+				There was an error while trying to fetch product information. If the issue persists please try again later.
+			</Alert>
 		);
 	}
 
