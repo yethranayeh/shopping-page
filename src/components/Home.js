@@ -28,11 +28,17 @@ export default function Home(props) {
 				if (isSubscribed) {
 					setProducts([...data]);
 					setLoading(false);
+				} else {
+					return null;
 				}
 			})
 			.catch((error) => {
-				setHasError(true);
-				setLoading(false);
+				if (isSubscribed) {
+					setLoading(false);
+					setHasError(true);
+				} else {
+					return null;
+				}
 			});
 		return () => {
 			isSubscribed = false;
