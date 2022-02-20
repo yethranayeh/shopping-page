@@ -16,3 +16,10 @@
 	word-wrap: normal;
 	white-space: inherit;
 }
+
+.Card__RemoveButton {
+	position: absolute;
+	margin: 0.4rem;
+	top: 0;
+	right: 0;
+}

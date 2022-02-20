@@ -24,6 +24,11 @@ export default function App() {
 		setCartItems([...cartItems, product]);
 	}
 
+	function removeItemHandler(id, amount) {
+		setCartLength(cartLength - amount);
+		setCartItems(cartItems.filter((item) => item.id !== id));
+	}
+
 	function updateCartAmount(length) {
 		setCartLength(length);
 	}
@@ -42,7 +47,16 @@ export default function App() {
 							<Routes>
 								<Route path='/' element={<Home clickHandler={addItemHandler} />} />
 								<Route path='/about' element={<About />} />
-								<Route path='/cart' element={<Cart cartItems={cartItems} amountUpdateHandler={updateCartAmount} />} />
+								<Route
+									path='/cart'
+									element={
+										<Cart
+											cartItems={cartItems}
+											amountUpdateHandler={updateCartAmount}
+											removeItemHandler={removeItemHandler}
+										/>
+									}
+								/>
 							</Routes>
 						</div>
 					</Paper>

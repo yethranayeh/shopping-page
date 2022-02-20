@@ -5,6 +5,7 @@ import {
 	Badge,
 	Button,
 	Card as CardMantine,
+	CloseButton,
 	Image,
 	Group,
 	Spoiler,
@@ -23,20 +24,21 @@ export default function Card({
 	description,
 	addClickHandler,
 	cart,
-	changeAmountHandler
+	changeAmountHandler,
+	removeClickHandler
 }) {
 	const theme = useMantineTheme();
 	const imgSize = cart ? 250 : 150;
 	const [amount, setAmount] = useState(itemAmount);
 
 	const secondaryColor = theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
-	if (cart) {
-		function amountChangeHandler(amount) {
-			if (amount > 0) {
-				setAmount(amount);
-				changeAmountHandler(id, amount);
-			}
+	function amountChangeHandler(amount) {
+		if (amount > 0) {
+			setAmount(amount);
+			changeAmountHandler(id, amount);
 		}
+	}
+	if (cart) {
 		return (
 			<div className='Card'>
 				<CardMantine shadow='sm' padding='lg'>
@@ -59,6 +61,15 @@ export default function Card({
 						</Spoiler>
 					</Text>
 					<NumberInput label='Amount' defaultValue={amount} max={10} min={1} onChange={amountChangeHandler} />
+					<CloseButton
+						variant='filled'
+						title='Remove from cart'
+						color='red'
+						size='lg'
+						iconSize={24}
+						className='Card__RemoveButton'
+						onClick={() => removeClickHandler(id)}
+					/>
 				</CardMantine>
 			</div>
 		);

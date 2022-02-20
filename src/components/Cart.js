@@ -1,13 +1,20 @@
 /** @format */
 import "../styles/Cart.css";
 import Card from "./Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Badge, Button, Grid } from "@mantine/core";
 
-export default function Cart({ cartItems, amountUpdateHandler }) {
+export default function Cart({ cartItems, amountUpdateHandler, removeItemHandler }) {
 	const [cartItemsList, setCartItemsList] = useState(cartItems);
 	const [uniqueItems, setUniqueItems] = useState(getUniqueItems());
 	const [totalPrice, setTotalPrice] = useState(getTotalPrice());
+
+	useEffect(() => {
+		setCartItemsList(cartItems);
+		setUniqueItems(getUniqueItems());
+		setTotalPrice(getTotalPrice());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [cartItems, cartItemsList]);
 
 	function getUniqueItems() {
 		return cartItemsList.reduce((acc, item) => {
@@ -29,6 +36,10 @@ export default function Cart({ cartItems, amountUpdateHandler }) {
 
 	function updateTotalPrice() {
 		setTotalPrice(getTotalPrice());
+	}
+
+	function findItemAmount(id) {
+		return cartItemsList.filter((item) => item.id === id).length;
 	}
 
 	function changeHandler(id, amount) {
@@ -54,8 +65,8 @@ export default function Cart({ cartItems, amountUpdateHandler }) {
 		amountUpdateHandler(cartItemsList.length);
 	}
 
-	function findItemAmount(id) {
-		return cartItemsList.filter((item) => item.id === id).length;
+	function removeFromCart(id) {
+		removeItemHandler(id, findItemAmount(id));
 	}
 
 	if (cartItemsList.length !== 0) {
@@ -78,6 +89,7 @@ export default function Cart({ cartItems, amountUpdateHandler }) {
 								price={product.price}
 								cart={true}
 								changeAmountHandler={changeHandler}
+								removeClickHandler={removeFromCart}
 							/>
 						</Grid.Col>
 					))}
