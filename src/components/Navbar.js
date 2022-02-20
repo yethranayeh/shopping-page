@@ -1,8 +1,7 @@
 /** @format */
 import "../styles/Navbar.css";
 import { NavLink } from "react-router-dom";
-import { ActionIcon, Anchor, Title } from "@mantine/core";
-import { HomeIcon } from "@modulz/radix-icons";
+import { Anchor, Title } from "@mantine/core";
 import ThemeButton from "./ThemeButton";
 
 export default function Navbar(props) {

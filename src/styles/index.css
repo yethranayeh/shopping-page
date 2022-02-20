@@ -13,4 +13,13 @@ a {
 
 a.active {
 	text-decoration: underline;
+	font-weight: bold;
+}
+
+a:not(.active) {
+	opacity: 0.7;
+}
+
+a:not(.active):hover {
+	opacity: 1;
 }
