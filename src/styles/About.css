@@ -1,0 +1,19 @@
+/** @format */
+
+.About {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 1.5rem 6rem;
+	gap: var(--gap-md);
+}
+
+.About__Title {
+	margin-top: var(--gap-lg);
+}
+
+@media screen and (max-width: 768px) {
+	.About {
+		padding: 0.3rem 1rem;
+	}
+}
