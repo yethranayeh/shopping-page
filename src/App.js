@@ -3,7 +3,7 @@
 import "./styles/App.css";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ColorSchemeProvider, MantineProvider, Paper } from "@mantine/core";
+import { ColorSchemeProvider, Divider, MantineProvider, Paper } from "@mantine/core";
 import { useLocalStorageValue } from "@mantine/hooks";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -34,6 +34,7 @@ export default function App() {
 					<Paper padding='lg' radius={0} style={{ minHeight: "100vh" }}>
 						<div className='App'>
 							<Navbar cartLength={cartLength} />
+							<Divider size='lg' />
 							<Routes>
 								<Route path='/' element={<Home clickHandler={clickHandler} />} />
 								<Route path='/about' element={<About />} />
