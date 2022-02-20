@@ -11,21 +11,32 @@ export default function Home(props) {
 	const [products, setProducts] = useState([]);
 	const fetchProductAmount = 10;
 
-	useEffect(() => {
-		// setTimeout(() => {
-		// 	setLoading(false);
-		// }, 2000);
-		async function fetchData() {
-			try {
-				const response = await fetch(`https://fakestoreapi.com/products?limit=${fetchProductAmount}`);
-				const data = await response.json();
-				setProducts([...data]);
-				setLoading(false);
-			} catch (error) {
-				setHasError(true);
-			}
+	async function fetchData() {
+		try {
+			const response = await fetch(`https://fakestoreapi.com/products?limit=${fetchProductAmount}`);
+			const data = await response.json();
+			return data;
+		} catch (error) {
+			throw new Error(error);
 		}
-		fetchData();
+	}
+
+	useEffect(() => {
+		let isSubscribed = true;
+		fetchData()
+			.then((data) => {
+				if (isSubscribed) {
+					setProducts([...data]);
+					setLoading(false);
+				}
+			})
+			.catch((error) => {
+				setHasError(true);
+				setLoading(false);
+			});
+		return () => {
+			isSubscribed = false;
+		};
 	}, []);
 
 	function addToCart(id) {
