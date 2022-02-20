@@ -30,6 +30,12 @@ export default function Home(props) {
 		}
 	]);
 
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+	}, []);
+
 	function addToCart(id) {
 		// Send the object with corresponding id to the Parent
 		props.clickHandler(products.filter((product) => product.id === id)[0]);
