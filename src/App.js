@@ -45,10 +45,10 @@ export default function App() {
 							<Navbar cartLength={cartLength} />
 							<Divider size='lg' />
 							<Routes>
-								<Route path='/' element={<Home clickHandler={addItemHandler} />} />
-								<Route path='/about' element={<About />} />
+								<Route path='/shopping-page' element={<Home clickHandler={addItemHandler} />} />
+								<Route path='/shopping-page/about' element={<About />} />
 								<Route
-									path='/cart'
+									path='/shopping-page/cart'
 									element={
 										<Cart
 											cartItems={cartItems}

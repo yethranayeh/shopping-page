@@ -7,7 +7,7 @@ import ThemeButton from "./ThemeButton";
 export default function Navbar(props) {
 	return (
 		<nav className='Navbar'>
-			<Anchor component={NavLink} to={"/"}>
+			<Anchor component={NavLink} to={"/shopping-page"}>
 				<Title order={1} align={"left"}>
 					Shopping Page
 				</Title>
@@ -15,17 +15,17 @@ export default function Navbar(props) {
 			<ThemeButton />
 			<ul className='Navbar__Links'>
 				<li>
-					<Anchor component={NavLink} to={"/"}>
+					<Anchor component={NavLink} to={"/shopping-page"}>
 						Home
 					</Anchor>
 				</li>
 				<li>
-					<Anchor component={NavLink} to={"/about"}>
+					<Anchor component={NavLink} to={"/shopping-page/about"}>
 						About
 					</Anchor>
 				</li>
 				<li>
-					<Anchor component={NavLink} to={"/cart"}>
+					<Anchor component={NavLink} to={"/shopping-page/cart"}>
 						Cart{props.cartLength > 0 ? ` (${props.cartLength})` : ""}
 					</Anchor>
 				</li>
