@@ -20,8 +20,8 @@ export default function Card({ id, imgSrc, title, price, description, clickHandl
 					<Text weight={500} className={"Card__Title"}>
 						{title}
 					</Text>
-					<Badge color='pink' variant='light'>
-						${price}
+					<Badge color='indigo' variant='light' size='md'>
+						{`$${price}`}
 					</Badge>
 				</Group>
 

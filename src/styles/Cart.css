@@ -1,0 +1,30 @@
+/** @format */
+
+.Cart {
+	width: 55%;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+	.Cart {
+		width: 65%;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.Cart {
+		width: 75%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.Cart {
+		width: 85%;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.Cart {
+		width: 100%;
+	}
+}
