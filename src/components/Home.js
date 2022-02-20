@@ -52,7 +52,7 @@ export default function Home(props) {
 							title={product.title}
 							description={product.description}
 							price={product.price}
-							clickHandler={addToCart}
+							addClickHandler={addToCart}
 						/>
 					</Grid.Col>
 				))}

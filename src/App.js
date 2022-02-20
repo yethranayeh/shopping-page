@@ -19,9 +19,13 @@ export default function App() {
 	const [cartLength, setCartLength] = useState(0);
 	const [cartItems, setCartItems] = useState([]);
 
-	function clickHandler(product) {
+	function addItemHandler(product) {
 		setCartLength(cartLength + 1);
 		setCartItems([...cartItems, product]);
+	}
+
+	function updateCartAmount(length) {
+		setCartLength(length);
 	}
 
 	return (
@@ -36,9 +40,9 @@ export default function App() {
 							<Navbar cartLength={cartLength} />
 							<Divider size='lg' />
 							<Routes>
-								<Route path='/' element={<Home clickHandler={clickHandler} />} />
+								<Route path='/' element={<Home clickHandler={addItemHandler} />} />
 								<Route path='/about' element={<About />} />
-								<Route path='/cart' element={<Cart cartItems={cartItems} />} />
+								<Route path='/cart' element={<Cart cartItems={cartItems} amountUpdateHandler={updateCartAmount} />} />
 							</Routes>
 						</div>
 					</Paper>

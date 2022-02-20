@@ -5,6 +5,11 @@
 	margin: 0 auto;
 }
 
+.Cart__Badge,
+.Cart__Checkout {
+	text-align: center;
+}
+
 @media screen and (max-width: 1200px) {
 	.Cart {
 		width: 65%;
